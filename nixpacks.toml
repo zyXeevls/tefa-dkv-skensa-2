@@ -1,6 +1,12 @@
+[project]
 packages = ["php83", "php83Extensions.composer"]
 
 start_cmd = "php artisan serve --host 0.0.0.0 --port $PORT"
 
-[phases]
-  build = "composer install --no-dev"
+[phases.build]
+# Gunakan array command
+commands = [
+    "composer install --no-dev --optimize-autoloader --no-interaction",
+    "php artisan key:generate",
+    "php artisan migrate --force"
+]
