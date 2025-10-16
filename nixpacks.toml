@@ -6,16 +6,7 @@ start_cmd = "php artisan serve --host 0.0.0.0 --port $PORT"
 
 [phases.build]
 commands = [
-    # Copy .env.example jadi .env supaya key bisa digenerate
-    "cp .env.example .env",
-
-    # Install composer dependencies (tanpa dev)
     "composer install --no-dev --optimize-autoloader --no-interaction",
-
-    # Generate APP_KEY
-    "php artisan key:generate",
-
-    # Jalankan migration database
     "php artisan migrate --force"
 ]
 
