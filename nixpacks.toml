@@ -1,0 +1,6 @@
+packages = ["php83", "php83Extensions.composer"]
+
+start_cmd = "php artisan serve --host 0.0.0.0 --port $PORT"
+
+[phases]
+  build = "composer install --no-dev"
