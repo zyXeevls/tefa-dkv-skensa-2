@@ -1,9 +1,3 @@
-[project]
-# PHP 8.3 karena Railway free tier support PHP 8.2/8.3
-packages = ["php83", "php83Extensions.composer", "php83Extensions.mbstring", "php83Extensions.pdo", "php83Extensions.pdo_pgsql", "php83Extensions.redis", "php83Extensions.xml", "php83Extensions.curl", "php83Extensions.openssl", "php83Extensions.fileinfo"]
-
-start_cmd = "php artisan serve --host 0.0.0.0 --port $PORT"
-
 [phases.build]
 commands = [
     "composer install --no-dev --optimize-autoloader --no-interaction",
@@ -12,9 +6,10 @@ commands = [
 
 [phases.setup]
 commands = [
-    # Optional: install node/npm jika butuh build frontend
     "curl -fsSL https://deb.nodesource.com/setup_20.x | bash -",
     "apt-get install -y nodejs",
     "npm install",
     "npm run build"
 ]
+
+start_cmd = "php artisan serve --host 0.0.0.0 --port $PORT"
